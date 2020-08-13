@@ -10,7 +10,7 @@ import sys
 file_dir = os.path.dirname(__file__)
 sys.path.append(file_dir)
 if __name__ == "__main__":
-    boston_houseprice_data = pd.read_csv("../data/housing.data", header=0, index_col=None, sep='\s+')
+    boston_houseprice_data = pd.read_csv("data/housing.data", header=0, index_col=None, sep='\s+')
     print("data_shape:", boston_houseprice_data.shape)
 
     data_sample = boston_houseprice_data.iloc[:, :-1].values

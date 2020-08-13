@@ -16,6 +16,16 @@ class LossFunction:
         gradient = probability - label
         return gradient
 
+    def sigmoid_logloss(self, inputs, label):
+        probability = np.array([(1.0 / (1 + np.exp(-i))) for i in inputs])
+        loss = - np.sum(np.dot(label.T,np.log(probability)+ np.dot((1-label).T,np.log(1-probability)))) / ( len(label))
+        return loss
+
+    def der_sigmoid_logloss(self, inputs, label):
+        probability = np.array([(1.0 / (1 + np.exp(-i))) for i in inputs])
+        gradient = label - probability
+        return gradient
+
     def least_square_loss(self, predict, label):
         tmp1 = np.sum(np.square(label - predict), 1)
         loss = np.mean(tmp1)
